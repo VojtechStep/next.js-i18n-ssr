@@ -1,0 +1,46 @@
+{
+  "name": "next-i18n-ssr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node build/server/index.js",
+    "dev:server":
+      "nodemon --no-stdin --watch build/server build/server/index.js",
+    "dev":
+      "yarn clear && cross-env NODE_ENV=development yarn build:server --watch",
+    "clear": "rimraf build node_modules/.cache",
+    "build:client": "next build",
+    "build:server": "yarn webpack --config server/webpack.config.js",
+    "build":
+      "cross-env NODE_ENV=production yarn build:client && yarn build:server",
+    "rebuild": "yarn clear && yarn build"
+  },
+  "dependencies": {
+    "browser-cookies": "^1.2.0",
+    "express": "^4.16.3",
+    "i18next": "^11.1.1",
+    "i18next-node-fs-backend": "^1.0.0",
+    "i18next-xhr-backend": "^1.5.1",
+    "next": "^5.1.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-i18next": "^7.5.1",
+    "recompose": "^0.26.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "cross-env": "^5.1.4",
+    "nodemon": "^1.17.3",
+    "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "3.10.0",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-shell-plugin": "^0.5.0"
+  },
+  "prettier": {
+    "trailingComma": "es5"
+  }
+}
